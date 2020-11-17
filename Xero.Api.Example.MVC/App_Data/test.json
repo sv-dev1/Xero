@@ -1,0 +1,97 @@
+﻿{
+  "ID": "b03c6f9c-c9e0-4cc3-a0b5-ff257c14f7d2",
+  "iSError": false,
+  "SavedData": {
+    "InvoiceID": "b03c6f9c-c9e0-4cc3-a0b5-ff257c14f7d2",
+    "InvoiceNumber": "100235",
+    "Contact": {
+      "ContactID": "90962d13-c434-4515-87af-6cf95f45b6c3",
+      "Name": "Jacobs Biscuits",
+      "FirstName": "Jacobs Biscuits",
+      "LastName": "Jacobs Biscuits",
+      "EmailAddress": "",
+      "BankAccountDetails": "",
+      "IsSupplier": false,
+      "IsCustomer": true,
+      "SalesTrackingCategories": [],
+      "PurchasesTrackingCategories": [],
+      "ContactPersons": [],
+      "Addresses": [
+        {
+          "AddressType": 1,
+          "AddressLine1": "Jacobs Towers",
+          "City": "",
+          "Region": "",
+          "PostalCode": "",
+          "Country": ""
+        },
+        {
+          "AddressType": 0,
+          "City": "",
+          "Region": "",
+          "PostalCode": "",
+          "Country": ""
+        }
+      ],
+      "Phones": [
+        {
+          "PhoneType": 0,
+          "PhoneNumber": "",
+          "PhoneAreaCode": "",
+          "PhoneCountryCode": ""
+        },
+        {
+          "PhoneType": 1,
+          "PhoneNumber": "",
+          "PhoneAreaCode": "",
+          "PhoneCountryCode": ""
+        },
+        {
+          "PhoneType": 3,
+          "PhoneNumber": "",
+          "PhoneAreaCode": "",
+          "PhoneCountryCode": ""
+        },
+        {
+          "PhoneType": 2,
+          "PhoneNumber": "",
+          "PhoneAreaCode": "",
+          "PhoneCountryCode": ""
+        }
+      ],
+      "ContactGroups": [],
+      "UpdatedDateUTC": "2020-08-03T10:46:59.637"
+    },
+    "Type": 1,
+    "Status": 0,
+    "LineAmountTypes": 2,
+    "Date": "2020-08-03T00:00:00",
+    "DueDate": "2020-08-17T00:00:00",
+    "SubTotal": 1345.00,
+    "TotalTax": 0.00,
+    "Total": 1345.00,
+    "CurrencyCode": "INR",
+    "CurrencyRate": 1.000000,
+    "AmountDue": 1345.00,
+    "AmountPaid": 0.00,
+    "Reference": "",
+    "LineItems": [
+      {
+        "Description": "NEBOSH Construction Certificate - (Event No: 110/18134) Venue: Crown Plaza, LS1 4DL Dates: 14/12/2020 - 19/01/2021",
+        "Quantity": 1.0000,
+        "UnitAmount": 1345.0000,
+        "TaxType": "NONE",
+        "TaxAmount": 0.00,
+        "LineAmount": 1345.00,
+        "Tracking": [],
+        "LineItemID": "78c48661-5c53-4dc3-9153-87b6dd430fd7",
+        "ValidationErrors": []
+      }
+    ],
+    "SentToContact": false,
+    "Prepayments": [],
+    "Overpayments": [],
+    "UpdatedDateUTC": "2020-08-03T11:00:39.347",
+    "Warnings": []
+  }
+}

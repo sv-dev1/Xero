@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <center>
+        <h2>Create Contact</h2>
+        <p>When Contact Is Cretaed you will get ContactID in the TextBox which you can use at your end</p>
+        <div>
+            Name: <input type="text" id="txtName" /><br />
+            First Name: <input type="text" id="txtFirstName" /><br />
+            Last Name: <input type="text" id="txtLastName" /><br />
+            Email: <input type="text" id="txtEmailAddress" /><br />
+            <br />
+            <br />
+            <hr />
+            ContactID: <input type="text" id="txtContactID" /><br />
+            <button onclick="TestApi();" name="Click">Create Contact</button>
+        </div>
+    </center>
+</body>
+</html>
+<script>
+    function TestApi() {
+        debugger;
+        var dataval =
+            {
+                //"ContactID": "845fe3ad-f2fa-43fc-94ba-9779840210cb", //Pass ContactId when you are Editing an Existing Contact other wiase remove it.
+                "Name": $("#txtName").val(),
+                "FirstName": $("#txtFirstName").val(),
+                "LastName": $("#txtLastName").val(),
+                "EmailAddress": $("#txtEmailAddress").val()
+            }
+        $.ajax({
+            url: 'http://localhost:61795/api/Values/CreateInvoice',
+            type: 'POST',
+            dataType: 'json',
+            data: dataval,
+            success: function (data) {
+                debugger;
+                if (data.iSError == true) {
+                    alert('Error occurred while processing your request.!');
+                }
+                else {
+                    SetValue(data.ID);
+                    alert('Contact Successfully Created in Xero')
+                }
+            },
+        });
+    }
+    function SetValue(ID) {
+        $("#txtContactID").val(ID)
+    }
+
+
+    //$.ajax({
+    //    url: 'http://localhost:61795/api/Values/CreateInvoice',
+    //    type: 'GET',
+    //    success: function (data) {
+    //        debugger;
+    //        if (data.iSError == true) {
+    //            alert('Error occurred while processing your request.!');
+    //        }
+    //        else {
+    //            debugger;
+    //            alert('Contact Successfully Created in Xero')
+    //        }
+    //    },
+    //});
+
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            debugger;
+            var data = JSON.parse(this.responseText);
+        }
+    };
+    xhttp.open("GET", "http://localhost:61795/api/Values/CreateInvoice", true);
+    xhttp.send();
+
+</script>

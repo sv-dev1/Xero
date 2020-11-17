@@ -1,0 +1,122 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Xero API Help Document</title>
+</head>
+<body>
+    <p></p>
+    <p><span style="font-size: 18px; font-weight: bold; "> Connect to xero :</span> use below url to proceed </p><p> https://xeroaccounts.geniussoftware.co.uk/Home/Connect </p>
+    <hr />
+    <div>
+        <pre>
+<h3>GET : Use following url to get collection of mentioned xero element.</h3>
+<hr />
+    1.) Get All Accounts: GET https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/GetAccounts <br />
+    2.) Get All Contacts: GET https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/GetContacts <br />
+    3.) Get All Invoices: GET https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/GetInvoices <br />
+    4.) Get All PurchaseOrders: GET https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/GetPurchaseOrders <br />
+
+<h3>POST : Use below url to create following xero element</h3>
+<hr />
+
+1.) Create Account: POST https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/CreateAccount
+    Example of creating a account record with minimum element
+    
+    {
+    "Name": "Test Account" ,
+    "Type" : "BANK" ,
+    "BankAccountNumber" : "121-121-1234567"
+    }
+2.) Create Contact: POST https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/CreateContact
+    Example of creating a contact record with minimum element
+   
+    {
+    "Name": "24 locks",
+    "FirstName": "Ben",
+    "LastName": "Bowden",
+    "EmailAddress": "test@example.com"
+    }
+3.) Create Invoice: POST https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/CreateInvoice
+    Example of creating a Invoice record
+    {
+    "Contact": {
+            "ContactID": "55024bff-4363-490a-99c3-9d8ea273e9e9"
+        },
+    "Type":"DRAFT",
+    "LineItems": [
+            {
+                "Description":"Test Invoice",
+                "UnitAmount":"25.65",
+                "Quantity": "1"         
+            }
+           ]  
+      }      
+4.) Create PurchaseOrder: POST https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/CreatePurchaseOrder
+    Example of creating a PurchaseOrder record
+    
+    {
+    "Date": "2019-06-19T00:00:00",
+    "CurrencyCode": "INR",
+    "CurrencyRate": 1,
+    "Contact": {
+    "ContactID": "55024bff-4363-490a-99c3-9d8ea273e9e9"
+    },
+    "Status": 2,
+    "LineItems": [
+    {
+    "Description": "New PO",
+    "Quantity": 7,
+    "UnitAmount": 3
+    }
+    ]
+    }
+</pre>
+    </div>
+   
+</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    function TesApi() {
+        debugger;
+        var dataval =
+            {
+                "ContactID": "845fe3ad-f2fa-43fc-94ba-9779840210cb",
+                "Name": "Smt . Yoges Test",
+                "FirstName": "Ben",
+                "LastName": "Cutting",
+                "EmailAddress": "test@example.com"
+            }
+        $.ajax({
+            //url: 'https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/CreateContact',
+            url: 'http://localhost:61795/api/XeroApi/CreateContact',
+            type: 'POST',
+            dataType: 'json',
+            data: dataval,
+            success: function (data) {
+                debugger;
+                if (data.iSError == true) {
+                    alert('Error occurred while processing your request.!');
+                }
+                else {
+                    SetValue(data.ID);
+                    alert('Invoice Successfully Created in Xero\n ID=' + data.ID)
+                }
+            },
+        });
+    }
+    function SetValue(ID) {
+        debugger;
+        $("#myinput").val(ID)
+    }
+</script>
+
+
+
