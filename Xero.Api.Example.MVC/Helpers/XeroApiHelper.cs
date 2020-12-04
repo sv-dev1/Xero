@@ -22,8 +22,8 @@ namespace Xero.Api.Example.MVC.Helpers
 
         static XeroApiHelper()
         {
-            var callbackUrl = "http://localhost:61795/Home/Authorize";
-            //var callbackUrl = "https://xeroaccounts.co.uk/Home/Authorize";
+            //var callbackUrl = "http://localhost:61795/Home/Authorize";
+            var callbackUrl = "https://connector.protectoraircare.com.au/Home/Authorize";
             var memoryStore = new MemoryAccessTokenStore();
             var requestTokenStore = new MemoryRequestTokenStore();
             var baseApiUrl = "https://api.xero.com";

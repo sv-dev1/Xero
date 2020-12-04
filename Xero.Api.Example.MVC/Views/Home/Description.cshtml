@@ -11,21 +11,21 @@
 </head>
 <body>
     <p></p>
-    <p><span style="font-size: 18px; font-weight: bold; "> Connect to xero :</span> use below url to proceed </p><p> https://xeroaccounts.geniussoftware.co.uk/Home/Connect </p>
+    <p><span style="font-size: 18px; font-weight: bold; "> Connect to xero :</span> use below url to proceed </p><p> http://localhost:61795/Home/Connect </p>
     <hr />
     <div>
         <pre>
 <h3>GET : Use following url to get collection of mentioned xero element.</h3>
 <hr />
-    1.) Get All Accounts: GET https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/GetAccounts <br />
-    2.) Get All Contacts: GET https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/GetContacts <br />
-    3.) Get All Invoices: GET https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/GetInvoices <br />
-    4.) Get All PurchaseOrders: GET https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/GetPurchaseOrders <br />
+    1.) Get All Accounts: GET http://localhost:61795/api/XeroApi/GetAccounts <br />
+    2.) Get All Contacts: GET http://localhost:61795/api/XeroApi/GetContacts <br />
+    3.) Get All Invoices: GET http://localhost:61795/api/XeroApi/GetInvoices <br />
+    4.) Get All PurchaseOrders: GET http://localhost:61795/api/XeroApi/GetPurchaseOrders <br />
 
 <h3>POST : Use below url to create following xero element</h3>
 <hr />
 
-1.) Create Account: POST https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/CreateAccount
+1.) Create Account: POST http://localhost:61795/api/XeroApi/CreateAccount
     Example of creating a account record with minimum element
     
     {
@@ -33,7 +33,7 @@
     "Type" : "BANK" ,
     "BankAccountNumber" : "121-121-1234567"
     }
-2.) Create Contact: POST https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/CreateContact
+2.) Create Contact: POST http://localhost:61795/api/XeroApi/CreateContact
     Example of creating a contact record with minimum element
    
     {
@@ -42,7 +42,7 @@
     "LastName": "Bowden",
     "EmailAddress": "test@example.com"
     }
-3.) Create Invoice: POST https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/CreateInvoice
+3.) Create Invoice: POST http://localhost:61795/api/XeroApi/CreateInvoice
     Example of creating a Invoice record
     {
     "Contact": {
@@ -57,7 +57,7 @@
             }
            ]  
       }      
-4.) Create PurchaseOrder: POST https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/CreatePurchaseOrder
+4.) Create PurchaseOrder: POST http://localhost:61795/api/XeroApi/CreatePurchaseOrder
     Example of creating a PurchaseOrder record
     
     {
@@ -95,7 +95,7 @@
                 "EmailAddress": "test@example.com"
             }
         $.ajax({
-            //url: 'https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/CreateContact',
+            //url: 'http://localhost:61795/api/XeroApi/CreateContact',
             url: 'http://localhost:61795/api/XeroApi/CreateContact',
             type: 'POST',
             dataType: 'json',

@@ -10,15 +10,18 @@ using System;
 using System.Web;
 using System.IO;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace Xero.Api.Example.MVC
 {
     public class HomeController : Controller
     {
+        //private XeroClient xeroClient;
         private IMvcAuthenticator _authenticator;
         private ApiUser _user;
         public HomeController()
         {
+            //xeroClient = new XeroClient();
             _user = XeroApiHelper.User();
             _authenticator = XeroApiHelper.MvcAuthenticator();
         }

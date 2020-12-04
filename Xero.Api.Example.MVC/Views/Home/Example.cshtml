@@ -6,19 +6,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
+    @*<center>
+            <h2>Create Contact</h2>
+            <p>When Contact Is Cretaed you will get ContactID in the TextBox which you can use at your end</p>
+            <div>
+                Name: <input type="text" id="txtName" /><br />
+                First Name: <input type="text" id="txtFirstName" /><br />
+                Last Name: <input type="text" id="txtLastName" /><br />
+                Email: <input type="text" id="txtEmailAddress" /><br />
+                <br />
+                <br />
+                <hr />
+                ContactID: <input type="text" id="txtContactID" /><br />
+                <button onclick="TestApi();" name="Click">Create Contact</button>
+            </div>
+        </center>*@
+
     <center>
-        <h2>Create Contact</h2>
-        <p>When Contact Is Cretaed you will get ContactID in the TextBox which you can use at your end</p>
+        <h2>Create Invoice (With Test Data)</h2>
         <div>
-            Name: <input type="text" id="txtName" /><br />
-            First Name: <input type="text" id="txtFirstName" /><br />
-            Last Name: <input type="text" id="txtLastName" /><br />
-            Email: <input type="text" id="txtEmailAddress" /><br />
-            <br />
-            <br />
-            <hr />
-            ContactID: <input type="text" id="txtContactID" /><br />
-            <button onclick="TestApi();" name="Click">Create Contact</button>
+            <span>Xero Invoice ID</span>
+            <textarea id="txtDetails" rows="4" cols="30"></textarea>
+            <button onclick="TestApi();" name="Click">Create Invoice</button>
         </div>
     </center>
 </body>
@@ -28,61 +37,42 @@
         debugger;
         var dataval =
         {
-            //"ContactID": "845fe3ad-f2fa-43fc-94ba-9779840210cb", //Pass ContactId when you are Editing an Existing Contact other wiase remove it.
-            "Name": $("#txtName").val(),
-            "FirstName": $("#txtFirstName").val(),
-            "LastName": $("#txtLastName").val(),
-            "EmailAddress": $("#txtEmailAddress").val()
+            "Contact": {
+                "ContactID": "47f61ab1-5245-40a2-a3a5-bc224c850c8d"
+                //"ContactID": "9879dd5c-4c5a-4e0a-a998-20b25d916fc9"
+            },
+            "Type": 1,
+            "Status": 3,
+            "LineAmountTypes": 0,
+            "Date": "2020-11-19T00:00:00",
+            "DueDate": "2020-12-20T00:00:00",
+            "Reference": "",
+            "LineItems": [
+                {
+                    "Description": "Test Invoice",
+                    "Quantity": 1.0000,
+                    "UnitAmount": 13.6500,
+                    "AccountCode": "310"
+                }
+            ]
         }
+        console.log(dataval);
         $.ajax({
-            url: 'http://localhost:61795/api/XeroApi/CreateContact',
+            url: window.location.origin + '/api/XeroApi/CreateInvoice',
             type: 'POST',
             dataType: 'json',
-            data: dataval,
+            contentType: 'application/json',
+            data: JSON.stringify(dataval),
             success: function (data) {
                 debugger;
                 if (data.iSError == true) {
                     alert('Error occurred while processing your request.!');
                 }
                 else {
-                    SetValue(data.ID);
-                    alert('Contact Successfully Created in Xero')
+                    $('#txtDetails').val(data.ID);
+                    alert('Invoice Successfully Created in Xero')
                 }
             },
         });
-
-
-        //$.ajax({
-        //    url: 'https://xeroaccounts.geniussoftware.co.uk/api/XeroApi/CreateInvoice',
-        //    type: 'POST',
-        //    dataType: 'json',
-        //    data: dataval,
-        //    success: function (data) {
-        //        debugger;
-        //        if (data.iSError == true) {
-        //            //alert('Error occurred while processing your request.!');
-        //        }
-        //        else {
-        //            //alert('Invoice Successfully Created in Xero')
-        //            if (data.SavedData == null || data.SavedData == undefined) { }
-        //            else {
-        //                var XeroInvoiceID = data.SavedData.InvoiceID;
-        //                var XeroInvoiceNumber = data.SavedData.InvoiceNumber;
-        //                $("#txtXeroInvoiceID").val(XeroInvoiceID);
-        //                $("#txtXeroInvoiceNumber").val(XeroInvoiceNumber);
-        //                alert('Going to redirect on \n' + '<%=RefreshUrl%>');
-        //                var returl = '&XeroInvoiceID=' + XeroInvoiceID + '&XeroInvoiceNumber=' + XeroInvoiceNumber;
-
-        //                var redirectUrl = '<%=RefreshUrl%>' + returl;
-        //                alert('Final redirect URL \n' + redirectUrl);
-        //                window.location.href = redirectUrl;
-        //            }
-        //        }
-        //    },
-        //});
-
-    }
-    function SetValue(ID) {
-        $("#txtContactID").val(ID)
     }
 </script>
